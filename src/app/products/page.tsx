@@ -1,5 +1,5 @@
 import { Checkbox } from "@/components/ui/checkbox";
-import { Product } from "./entities";
+import { Product } from "./models";
 import { CounterButton } from "@app/components/counter-button";
 
 const getProducts = async (): Promise<Product[]> => {
