@@ -1,5 +1,8 @@
 import { Checkbox } from "@/components/ui/checkbox";
-const getProducts = async () => {
+import { Product } from "./entities";
+import { CounterButton } from "@app/components/counter-button";
+
+const getProducts = async (): Promise<Product[]> => {
   const response = await fetch("http://localhost:8080/products", {
     next: { revalidate: 10 },
   });
@@ -15,11 +18,15 @@ export default async function Products() {
       </h1>
       <ul className="w-full flex justify-center">
         {products.map((item: any) => (
-          <li key={item.id} className="text-white flex  gap-8">
-            <Checkbox className="w-8" /> <span>{item.name}</span>{" "}
+          <li
+            key={item.id}
+            className="text-white flex  gap-8 items-center mx-4"
+          >
+            <Checkbox className="w-4 h-4" /> <span>{item.name}</span>{" "}
           </li>
         ))}
       </ul>
+      <CounterButton />
     </div>
   );
 }
